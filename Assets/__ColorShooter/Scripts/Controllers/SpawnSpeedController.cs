@@ -39,8 +39,6 @@ namespace __ColorShooter.Scripts.Controllers
             switch (obj.upgradeName)
             {
                 case "Bullet Speed":
-                    Debug.LogError("SPAWN SPEED : " + _bulletSpawnInterval);
-                    Debug.LogError(" DEFENCE : " + obj.upgradeNo);
                     if (_bulletSpawnInterval < 0.1f)
                     {
                         Debug.LogError("Bullet Spawn Interval is full");

@@ -25,14 +25,6 @@ namespace __ColorShooter.Scripts.Controllers
         {
             get => _enemyKilled;
         }
-        
-        // private void Start()
-        // {
-        //     _enemyCount= FindObjectOfType<LevelManager>().CurrentLevel.targetEnemyCount;
-        //     print(_enemyCount);
-        //     _enemyKilled = 0;
-        // }
-
         private void OnEnable()
         {
             GameManager.Instance.OnGameStart += OnGameStart;

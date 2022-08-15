@@ -38,7 +38,6 @@ namespace __ColorShooter.Scripts.Controllers
             switch (obj.upgradeName)
             {
                 case "Stamina":
-                    Debug.LogError("Stamina : " + obj.upgradeNo);
                     startHealth += upgradeHealth;
                     break;
             }
@@ -46,7 +45,6 @@ namespace __ColorShooter.Scripts.Controllers
 
         private void OnGameStart()
         {
-            Debug.Log("OnGameStartInTowerDamageController and health is : " + startHealth);
             _health = startHealth;
             healthBar.fillAmount = _health / startHealth;
             foreach (var material in _materials)
@@ -83,7 +81,6 @@ namespace __ColorShooter.Scripts.Controllers
                 material.SetFloat("_Fill", val);
             }
             _renderer.materials = _materials;
-            Debug.LogError("Take damage for tower : " + _health);
             if (_health <= 0)
             {
                 Debug.LogError("Tower disable: " + _health);

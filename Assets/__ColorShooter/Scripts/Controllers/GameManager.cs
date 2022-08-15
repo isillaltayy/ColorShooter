@@ -44,14 +44,9 @@ namespace __ColorShooter.Scripts.Controllers
         private void Awake()
         {
             if (Instance == null)
-            {
                 Instance = this;
-               // DontDestroyOnLoad(gameObject);
-            }
             else
-            {
-               // Destroy(gameObject);
-            }
+               Destroy(gameObject);
             _enemySpawner = FindObjectOfType<EnemySpawner>();
             _bulletSpawner = FindObjectOfType<BulletSpawner>();
             _tempTowers.AddRange(_towers);
@@ -59,29 +54,21 @@ namespace __ColorShooter.Scripts.Controllers
         private void Start()
         {
             ObjectPool.instance.StartPool();
-            
         }
 
         private void OnEnable()
         {
             ColorChangeController.StartSpawning += StartBulletSpawning;
-            StartUpgrades.OnUpgradePurchased+= OnUpgradePurchased;
             Central.OnGameStartedHandler += StartGame;
             TowerDamageController.OnDeath += OnDeathOfTower;
-           // RoosterHub.Central.OnGameStartedHandler += StartGame;
-           
-          
         }
         private void OnDisable()
         {
             ColorChangeController.StartSpawning -= StartBulletSpawning;
-            StartUpgrades.OnUpgradePurchased-= OnUpgradePurchased;
             Central.OnGameStartedHandler -= StartGame;
             TowerDamageController.OnDeath -= OnDeathOfTower;
-            
         }
-          
-
+        
         private void OnDeathOfTower(GameObject tower)
         {
             _towers.Remove(tower);
@@ -89,18 +76,6 @@ namespace __ColorShooter.Scripts.Controllers
             {
                 RoosterHub.Central.Fail();
                 GameOver();
-            }
-        }
-        private void OnUpgradePurchased(StartingUpgradeArea.DTO obj)
-        {
-            switch (obj.upgradeName)
-            {
-                case "SPEED":
-                    Debug.LogError(" DEFANCE : "+obj.upgradeNo);
-                    break;
-                case "TOWER DEFENSE":
-                    Debug.LogError(" DEFANCE : "+obj.upgradeNo);
-                    break;
             }
         }
         private void Update()
